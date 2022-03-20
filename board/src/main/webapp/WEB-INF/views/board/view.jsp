@@ -19,6 +19,10 @@
 	<label>내용 : </label>
 	${view.content}<br />
 	
+	<div>
+		<a href="/board/modify?bno=${view.bno}">게시물 수정</a>
+	</div>
+	
 </form>
 </body>
 </html>

@@ -18,7 +18,8 @@ public class BoardController {
 
 	 @Inject
 	 private BoardService service;
-
+	 // 화면요청 -> 컨틒롤러 -> 서비스 -> DAO -> DB
+	 // DAO ->
 	 //게시글 조회
 	 @RequestMapping(value = "/list", method = RequestMethod.GET)
 	 public void getList(Model model) throws Exception {
@@ -52,4 +53,21 @@ public class BoardController {
 		
 		//service.view(bno);
 	}
+	
+	//게시물 수정
+	@RequestMapping(value = "/modify", method = RequestMethod.GET)
+	public void getModify(@RequestParam("bno") int bno, Model model) throws Exception {
+		BoardVO vo = service.view(bno);
+		
+		model.addAttribute("view",vo);
+	}
+	
+	//게시물 수정
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+	public String postModify(BoardVO vo) throws Exception {
+		service.modify(vo);
+		
+		return "redirect:/board/view?bno=" + vo.getBno();
+	}
+	
 }
