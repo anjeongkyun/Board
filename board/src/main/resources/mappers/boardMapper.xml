@@ -20,7 +20,7 @@
 		 -->
 		 insert into
 		  tbl_board (bno, title, content, writer)
-		   values(10, #{title}, #{content}, #{writer})
+		   values(17, #{title}, #{content}, #{writer})
 	</insert>
 	
 	<!-- 게시물 상세 조회 -->
@@ -32,4 +32,16 @@
 		where 
 			bno = #{bno}	 
 	</select>
+	
+	<!-- 게시물 수정 -->
+	<update id="modify" parameterType="com.board.domain.BoardVO" >
+	 update tbl_board
+	  set
+	   title = #{title},
+	   content = #{content},
+	   writer = #{writer}
+	  where bno = #{bno}
+	</update>
+	
+	
 </mapper>
